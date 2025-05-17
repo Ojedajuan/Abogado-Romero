@@ -5,10 +5,10 @@ import { z } from 'zod';
 
 // Define the schema here as it's used by the server action
 const contactSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  subject: z.string().min(5, { message: 'Subject must be at least 5 characters.' }).optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, { message: 'El nombre debe tener al menos 2 caracteres.' }),
+  email: z.string().email({ message: 'Por favor, ingrese una dirección de correo electrónico válida.' }),
+  subject: z.string().min(5, { message: 'El asunto debe tener al menos 5 caracteres.' }).optional(),
+  message: z.string().min(10, { message: 'El mensaje debe tener al menos 10 caracteres.' }),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;
@@ -22,8 +22,8 @@ export async function submitContactForm(data: ContactFormValues): Promise<{ succ
 
   // Simulate a chance of failure for demonstration
   // if (Math.random() > 0.8) {
-  //   return { success: false, message: 'Failed to send message. Please try again later.' };
+  //   return { success: false, message: 'Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.' };
   // }
 
-  return { success: true, message: 'Your message has been sent successfully. We will get back to you shortly.' };
+  return { success: true, message: 'Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto con usted en breve.' };
 }

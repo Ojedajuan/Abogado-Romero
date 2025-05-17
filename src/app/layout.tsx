@@ -23,8 +23,8 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'LawPortfolio | Expert Legal Services',
-  description: 'A professional portfolio for an expert lawyer, showcasing case studies, testimonials, and AI-powered legal tools.',
+  title: 'LawPortfolio | Servicios Legales Expertos',
+  description: 'Un portafolio profesional para un abogado experto, mostrando casos de estudio, testimonios y herramientas legales impulsadas por IA.',
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body
         className={cn(
           'min-h-screen bg-background font-serif antialiased',

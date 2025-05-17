@@ -8,12 +8,12 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '#hero', label: 'Home' },
-  { href: '#expertise', label: 'Expertise' },
-  { href: '#case-studies', label: 'Case Studies' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#brief-generator', label: 'AI Brief Tool' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#hero', label: 'Inicio' },
+  { href: '#expertise', label: 'Experiencia' },
+  { href: '#case-studies', label: 'Casos de Estudio' },
+  { href: '#testimonials', label: 'Testimonios' },
+  { href: '#brief-generator', label: 'Herramienta IA Informes' },
+  { href: '#contact', label: 'Contacto' },
 ];
 
 export default function Header() {
@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="LawPortfolio Home">
+        <Link href="/" className="flex items-center gap-2" aria-label="LawPortfolio Inicio">
           <Scale className="h-7 w-7 text-primary" />
           <span className="text-xl font-bold text-primary font-sans">LawPortfolio</span>
         </Link>
@@ -54,19 +54,19 @@ export default function Header() {
         <div className="md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open navigation menu">
+              <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] p-6">
               <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between">
-                   <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Home">
+                   <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Inicio">
                     <Scale className="h-6 w-6 text-primary" />
                     <span className="text-lg font-bold text-primary font-sans">LawPortfolio</span>
                   </Link>
                   <SheetClose asChild>
-                     <Button variant="ghost" size="icon" aria-label="Close navigation menu">
+                     <Button variant="ghost" size="icon" aria-label="Cerrar menú de navegación">
                         <X className="h-5 w-5" />
                       </Button>
                   </SheetClose>

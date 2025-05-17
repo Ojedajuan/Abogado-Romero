@@ -18,23 +18,23 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
   {
     id: 't1',
-    quote: "Their dedication and sharp legal insight were instrumental in resolving my case favorably. I couldn't have asked for better representation.",
-    name: 'Jane Doe',
-    title: 'CEO, Tech Solutions Inc.',
+    quote: "Su dedicación y aguda visión legal fueron fundamentales para resolver mi caso favorablemente. No podría haber pedido una mejor representación.",
+    name: 'Juana Pérez',
+    title: 'Directora Ejecutiva, Soluciones Tecnológicas Inc.',
     imageUrl: 'https://placehold.co/100x100.png',
   },
   {
     id: 't2',
-    quote: "Professional, responsive, and incredibly knowledgeable. They guided me through a complex legal process with clarity and confidence.",
-    name: 'John Smith',
-    title: 'Founder, Innovate Startups',
+    quote: "Profesionales, receptivos e increíblemente conocedores. Me guiaron a través de un complejo proceso legal con claridad y confianza.",
+    name: 'Juan García',
+    title: 'Fundador, Innovate Startups',
     imageUrl: 'https://placehold.co/100x100.png',
   },
   {
     id: 't3',
-    quote: "The team at LawPortfolio demonstrated exceptional expertise and a genuine commitment to my case. Highly recommended for any legal needs.",
-    name: 'Alice Brown',
-    title: 'Director, Creative Agency',
+    quote: "El equipo de LawPortfolio demostró una experiencia excepcional y un compromiso genuino con mi caso. Altamente recomendados para cualquier necesidad legal.",
+    name: 'Alicia Marrón',
+    title: 'Directora, Agencia Creativa',
     imageUrl: 'https://placehold.co/100x100.png',
   },
 ];
@@ -63,9 +63,9 @@ export default function TestimonialsSection() {
     <section id="testimonials" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">Client Testimonials</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">Testimonios de Clientes</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Hear from those we've had the privilege to represent. Their success stories are our greatest endorsements.
+            Escuche a aquellos a quienes hemos tenido el privilegio de representar. Sus historias de éxito son nuestros mayores avales.
           </p>
         </div>
         
@@ -105,7 +105,7 @@ export default function TestimonialsSection() {
             size="icon"
             className="absolute top-1/2 -translate-y-1/2 left-0 md:-left-16 transform bg-card hover:bg-secondary rounded-full w-10 h-10 md:w-12 md:h-12 shadow-md"
             onClick={prevTestimonial}
-            aria-label="Previous testimonial"
+            aria-label="Testimonio anterior"
           >
             <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
           </Button>
@@ -114,7 +114,7 @@ export default function TestimonialsSection() {
             size="icon"
             className="absolute top-1/2 -translate-y-1/2 right-0 md:-right-16 transform bg-card hover:bg-secondary rounded-full w-10 h-10 md:w-12 md:h-12 shadow-md"
             onClick={nextTestimonial}
-            aria-label="Next testimonial"
+            aria-label="Testimonio siguiente"
           >
             <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
           </Button>
@@ -124,7 +124,7 @@ export default function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Ir al testimonio ${index + 1}`}
                 className={cn(
                   "w-2.5 h-2.5 rounded-full transition-all duration-300",
                   currentIndex === index ? "bg-primary scale-125" : "bg-muted hover:bg-primary/50"

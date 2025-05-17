@@ -15,7 +15,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <BriefGeneratorSection />
       {/* Wrap ContactSection in Suspense as it uses useSearchParams */}
-      <Suspense fallback={<div>Loading contact form...</div>}>
+      <Suspense fallback={<div>Cargando formulario de contacto...</div>}>
         <ContactSection />
       </Suspense>
     </>

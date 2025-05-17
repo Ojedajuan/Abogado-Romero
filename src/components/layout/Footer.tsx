@@ -4,7 +4,7 @@ export default function Footer() {
     <footer className="border-t border-border/40 bg-background">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-center px-4 md:px-8">
         <p className="text-sm text-muted-foreground">
-          &copy; {currentYear} LawPortfolio. All rights reserved.
+          &copy; {currentYear} LawPortfolio. Todos los derechos reservados.
         </p>
       </div>
     </footer>

@@ -14,7 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const briefSchema = z.object({
-  keywords: z.string().min(10, { message: 'Please enter at least 10 characters of keywords.' }).max(500, {message: 'Keywords cannot exceed 500 characters.'}),
+  keywords: z.string().min(10, { message: 'Por favor, ingrese al menos 10 caracteres de palabras clave.' }).max(500, {message: 'Las palabras clave no pueden exceder los 500 caracteres.'}),
 });
 
 type BriefFormValues = z.infer<typeof briefSchema>;
@@ -39,18 +39,18 @@ export default function BriefGeneratorSection() {
       const result: GenerateLegalBriefOutput = await generateLegalBrief(input);
       setGeneratedBrief(result.brief);
       toast({
-        title: "Brief Generated",
-        description: "Your legal brief draft has been successfully generated.",
+        title: "Informe Generado",
+        description: "El borrador de su informe legal ha sido generado exitosamente.",
         variant: "default",
       });
     } catch (error) {
       console.error('Error generating brief:', error);
       toast({
         title: "Error",
-        description: "Failed to generate legal brief. Please try again.",
+        description: "Falló la generación del informe legal. Por favor, inténtelo de nuevo.",
         variant: "destructive",
       });
-      setGeneratedBrief("An error occurred while generating the brief. Please check the console for details or try again.");
+      setGeneratedBrief("Ocurrió un error al generar el informe. Por favor, revise la consola para más detalles o inténtelo de nuevo.");
     } finally {
       setIsLoading(false);
     }
@@ -60,19 +60,19 @@ export default function BriefGeneratorSection() {
     <section id="brief-generator" className="py-16 md:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">AI-Powered Brief Generator</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">Generador de Informes con IA</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Utilize our cutting-edge AI tool to draft initial legal arguments from keywords. A powerful assistant for your legal research and preparation.
+            Utilice nuestra herramienta de IA de vanguardia para redactar argumentos legales iniciales a partir de palabras clave. Un poderoso asistente para su investigación y preparación legal.
           </p>
         </div>
         <Card className="max-w-3xl mx-auto shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-primary font-sans">
               <Wand2 className="h-6 w-6 text-accent" />
-              Generate Legal Brief
+              Generar Informe Legal
             </CardTitle>
             <CardDescription>
-              Enter keywords related to your case, and our AI will help draft a starting point for your legal brief.
+              Ingrese palabras clave relacionadas con su caso, y nuestra IA le ayudará a redactar un punto de partida para su informe legal.
             </CardDescription>
           </CardHeader>
           <Form {...form}>
@@ -83,11 +83,11 @@ export default function BriefGeneratorSection() {
                   name="keywords"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="keywords" className="text-primary font-sans">Keywords</FormLabel>
+                      <FormLabel htmlFor="keywords" className="text-primary font-sans">Palabras Clave</FormLabel>
                       <FormControl>
                         <Textarea
                           id="keywords"
-                          placeholder="e.g., 'breach of contract, non-delivery of goods, damages calculation, relevant commercial code sections...'"
+                          placeholder="ej., 'incumplimiento de contrato, falta de entrega de bienes, cálculo de daños, secciones relevantes del código de comercio...'"
                           className="min-h-[120px] resize-y focus:ring-accent focus:border-accent"
                           {...field}
                           disabled={isLoading}
@@ -103,12 +103,12 @@ export default function BriefGeneratorSection() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Generating...
+                      Generando...
                     </>
                   ) : (
                     <>
                       <Wand2 className="mr-2 h-4 w-4" />
-                      Generate Brief
+                      Generar Informe
                     </>
                   )}
                 </Button>
@@ -117,7 +117,7 @@ export default function BriefGeneratorSection() {
           </Form>
           {generatedBrief && (
             <div className="p-6 border-t">
-              <h3 className="text-xl font-semibold text-primary mb-3 font-sans">Generated Brief Draft:</h3>
+              <h3 className="text-xl font-semibold text-primary mb-3 font-sans">Borrador de Informe Generado:</h3>
               <ScrollArea className="h-[300px] w-full rounded-md border p-4 bg-background">
                 <pre className="text-sm whitespace-pre-wrap text-foreground/90">{generatedBrief}</pre>
               </ScrollArea>

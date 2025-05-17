@@ -11,20 +11,20 @@ export default function HeroSection() {
       </div>
       <div className="container mx-auto px-4 md:px-8 text-center z-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary mb-6 animate-fade-in-down font-sans">
-          Expert Legal Counsel, Proven Results.
+          Asesoramiento Legal Experto, Resultados Comprobados.
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 max-w-3xl mx-auto mb-10 animate-fade-in-up">
-          Navigating complex legal landscapes with precision and dedication. Trust us to champion your cause and achieve the best possible outcome.
+          Navegando panoramas legales complejos con precisión y dedicación. Confíe en nosotros para defender su causa y lograr el mejor resultado posible.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up animation-delay-300">
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg transition-all duration-300 transform hover:scale-105">
             <Link href="#contact">
-              Schedule a Consultation <ChevronRight className="ml-2 h-5 w-5" />
+              Agendar una Consulta <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="shadow-lg transition-all duration-300 transform hover:scale-105">
             <Link href="#case-studies">
-              Explore Our Cases
+              Explore Nuestros Casos
             </Link>
           </Button>
         </div>

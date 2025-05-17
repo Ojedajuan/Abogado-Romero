@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
@@ -17,10 +16,10 @@ import { submitContactForm, type ContactFormValues } from '@/app/actions/contact
 
 
 const contactSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  subject: z.string().min(5, { message: 'Subject must be at least 5 characters.' }).optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
+  name: z.string().min(2, { message: 'El nombre debe tener al menos 2 caracteres.' }),
+  email: z.string().email({ message: 'Por favor, ingrese una dirección de correo electrónico válida.' }),
+  subject: z.string().min(5, { message: 'El asunto debe tener al menos 5 caracteres.' }).optional(),
+  message: z.string().min(10, { message: 'El mensaje debe tener al menos 10 caracteres.' }),
 });
 
 // ContactFormValues type is now imported from contactActions.ts
@@ -43,7 +42,7 @@ export default function ContactSection() {
   useEffect(() => {
     const service = searchParams.get('service');
     if (service) {
-      form.setValue('subject', `Inquiry about ${service}`);
+      form.setValue('subject', `Consulta sobre ${decodeURIComponent(service)}`);
     }
   }, [searchParams, form]);
 
@@ -53,15 +52,15 @@ export default function ContactSection() {
       const result = await submitContactForm(data);
       if (result.success) {
         toast({
-          title: 'Message Sent!',
-          description: result.message,
+          title: '¡Mensaje Enviado!',
+          description: result.message, // This message comes from server action, ensure it's translated there if needed or use a generic one here.
           variant: 'default',
         });
         form.reset();
       } else {
         toast({
           title: 'Error',
-          description: result.message,
+          description: result.message, // Same as above.
           variant: 'destructive',
         });
       }
@@ -69,7 +68,7 @@ export default function ContactSection() {
       console.error('Error submitting form:', error);
       toast({
         title: 'Error',
-        description: 'An unexpected error occurred. Please try again.',
+        description: 'Ocurrió un error inesperado. Por favor, inténtelo de nuevo.',
         variant: 'destructive',
       });
     } finally {
@@ -81,16 +80,16 @@ export default function ContactSection() {
     <section id="contact" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 font-sans">Póngase en Contacto</h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Have a legal question or need to discuss a case? Reach out to us. We're here to help.
+            ¿Tiene una pregunta legal o necesita discutir un caso? Contáctenos. Estamos aquí para ayudar.
           </p>
         </div>
         <Card className="max-w-2xl mx-auto shadow-xl">
           <CardHeader>
-            <CardTitle className="text-primary font-sans">Contact Us</CardTitle>
+            <CardTitle className="text-primary font-sans">Contáctenos</CardTitle>
             <CardDescription>
-              Fill out the form below, and we'll respond as soon as possible.
+              Complete el formulario a continuación y le responderemos lo antes posible.
             </CardDescription>
           </CardHeader>
           <Form {...form}>
@@ -101,9 +100,9 @@ export default function ContactSection() {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="name" className="text-primary font-sans">Full Name</FormLabel>
+                      <FormLabel htmlFor="name" className="text-primary font-sans">Nombre Completo</FormLabel>
                       <FormControl>
-                        <Input id="name" placeholder="John Doe" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
+                        <Input id="name" placeholder="Juan Pérez" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -114,9 +113,9 @@ export default function ContactSection() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="email" className="text-primary font-sans">Email Address</FormLabel>
+                      <FormLabel htmlFor="email" className="text-primary font-sans">Dirección de Correo Electrónico</FormLabel>
                       <FormControl>
-                        <Input id="email" type="email" placeholder="you@example.com" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
+                        <Input id="email" type="email" placeholder="usted@ejemplo.com" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -127,9 +126,9 @@ export default function ContactSection() {
                   name="subject"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="subject" className="text-primary font-sans">Subject (Optional)</FormLabel>
+                      <FormLabel htmlFor="subject" className="text-primary font-sans">Asunto (Opcional)</FormLabel>
                       <FormControl>
-                        <Input id="subject" placeholder="e.g., Inquiry about Corporate Law" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
+                        <Input id="subject" placeholder="ej., Consulta sobre Derecho Corporativo" {...field} disabled={isLoading} className="focus:ring-accent focus:border-accent" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -140,11 +139,11 @@ export default function ContactSection() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="message" className="text-primary font-sans">Message</FormLabel>
+                      <FormLabel htmlFor="message" className="text-primary font-sans">Mensaje</FormLabel>
                       <FormControl>
                         <Textarea
                           id="message"
-                          placeholder="Please describe your legal concern or question here..."
+                          placeholder="Por favor, describa su inquietud o pregunta legal aquí..."
                           className="min-h-[120px] resize-y focus:ring-accent focus:border-accent"
                           {...field}
                           disabled={isLoading}
@@ -160,12 +159,12 @@ export default function ContactSection() {
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+                      Enviando...
                     </>
                   ) : (
                     <>
                       <Send className="mr-2 h-4 w-4" />
-                      Send Message
+                      Enviar Mensaje
                     </>
                   )}
                 </Button>
