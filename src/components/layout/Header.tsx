@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Scale, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -48,41 +49,46 @@ export default function Header() {
           <span className="text-xl font-bold text-primary font-sans">LawPortfolio</span>
         </Link>
 
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-6">
           <NavLinksContent />
+          <Avatar className="h-10 w-10">
+            <AvatarImage src="https://placehold.co/40x40.png" alt="Foto del profesional" data-ai-hint="professional portrait" />
+            <AvatarFallback>AB</AvatarFallback>
+          </Avatar>
         </div>
         
-        <div className="md:hidden">
-          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[280px] p-6">
-              <SheetHeader>
-                <div className="flex items-center justify-between">
-                  <SheetTitle asChild>
-                    <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Inicio">
-                      <Scale className="h-6 w-6 text-primary" />
-                      <span className="text-lg font-bold text-primary font-sans">LawPortfolio</span>
-                    </Link>
-                  </SheetTitle>
-                  <SheetClose asChild>
-                     <Button variant="ghost" size="icon" aria-label="Cerrar menú de navegación">
-                        <X className="h-5 w-5" />
-                      </Button>
-                  </SheetClose>
-                </div>
-                {/* You can add an invisible SheetDescription for more context if needed, e.g.
-                <SheetDescription className="sr-only">Menú de navegación principal</SheetDescription> 
-                */}
-              </SheetHeader>
-              <div className="mt-6"> {/* Added margin top for spacing after header */}
-                <NavLinksContent className="items-start" />
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="md:hidden flex items-center">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+                <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación">
+                    <Menu className="h-6 w-6" />
+                </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[280px] p-0 pt-6">
+                    <SheetHeader className="px-6 pb-4 border-b">
+                        <div className="flex items-center justify-between">
+                        <SheetTitle asChild>
+                            <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Inicio">
+                            <Scale className="h-6 w-6 text-primary" />
+                            <span className="text-lg font-bold text-primary font-sans">LawPortfolio</span>
+                            </Link>
+                        </SheetTitle>
+                        <SheetClose asChild>
+                            <Button variant="ghost" size="icon" aria-label="Cerrar menú de navegación">
+                                <X className="h-5 w-5" />
+                            </Button>
+                        </SheetClose>
+                        </div>
+                    </SheetHeader>
+                    <div className="mt-6 flex flex-col items-center space-y-6 px-6"> {/* Added padding to content area */}
+                        <Avatar className="h-20 w-20">
+                            <AvatarImage src="https://placehold.co/80x80.png" alt="Foto del profesional" data-ai-hint="professional portrait" />
+                            <AvatarFallback>AB</AvatarFallback>
+                        </Avatar>
+                        <NavLinksContent className="items-center" />
+                    </div>
+                </SheetContent>
+            </Sheet>
         </div>
       </div>
     </header>
