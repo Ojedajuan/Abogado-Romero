@@ -6,35 +6,19 @@ import { Scale, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
-const allNavLinks = [
+const navLinks = [
   { href: '#hero', label: 'Inicio' },
   { href: '#expertise', label: 'Experiencia' },
   { href: '#case-studies', label: 'Casos de Estudio' },
   { href: '#testimonials', label: 'Testimonios' },
-  { href: '#brief-generator', label: 'Herramienta IA Informes' },
   { href: '#contact', label: 'Contacto' },
 ];
 
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false); // Simulate admin state
-
-  // Simulate checking admin status on component mount
-  useEffect(() => {
-    // In a real app, you would check authentication status here
-    // For demonstration, we'll just set isAdmin to true
-    setIsAdmin(true); 
-  }, []);
-
-  const navLinks = allNavLinks.filter(link => {
-    if (link.href === '#brief-generator') {
-      return isAdmin;
-    }
-    return true;
-  });
 
   const handleLinkClick = () => {
     setIsSheetOpen(false);
