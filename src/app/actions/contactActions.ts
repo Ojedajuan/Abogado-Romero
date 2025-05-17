@@ -14,16 +14,41 @@ const contactSchema = z.object({
 export type ContactFormValues = z.infer<typeof contactSchema>;
 
 export async function submitContactForm(data: ContactFormValues): Promise<{ success: boolean; message: string }> {
-  // Simulate email sending
-  console.log('Contact form submitted:', data);
-  // In a real app, you'd integrate with an email service here (e.g., SendGrid, Resend)
-  // For now, we'll just simulate a delay and success/failure
+  const { name, email, subject, message } = data;
+
+  // AQUÍ CONFIGURARÍAS EL ENVÍO REAL DE CORREO ELECTRÓNICO
+  // 1. Elige un proveedor de correo electrónico (ej. SendGrid, Resend, Nodemailer con SMTP).
+  // 2. Instala el SDK o librería correspondiente.
+  // 3. Configura las credenciales (API keys) de forma segura (ej. variables de entorno).
+
+  const recipientEmail = 'TU_DIRECCION_DE_EMAIL_AQUI@ejemplo.com'; // Reemplaza esto con tu email
+
+  console.log('--- Simulación de Envío de Correo ---');
+  console.log(`Para: ${recipientEmail}`);
+  console.log(`De: ${name} <${email}>`);
+  console.log(`Asunto: ${subject || 'Nuevo Mensaje de Contacto desde LawPortfolio'}`);
+  console.log('Cuerpo del Mensaje:');
+  console.log(message);
+  console.log('--- Fin de Simulación ---');
+  
+  // Simulación de la lógica de envío actual
   await new Promise(resolve => setTimeout(resolve, 1000));
 
-  // Simulate a chance of failure for demonstration
-  // if (Math.random() > 0.8) {
+  // Aquí iría la llamada real a tu servicio de email, por ejemplo:
+  // try {
+  //   await emailService.send({
+  //     to: recipientEmail,
+  //     from: 'noreply@lawportfolio.com', // O una dirección de tu dominio
+  //     replyTo: email,
+  //     subject: subject || `Nuevo Mensaje de Contacto de ${name}`,
+  //     html: `<p>Nombre: ${name}</p><p>Email: ${email}</p><p>Mensaje: ${message}</p>`,
+  //   });
+  //   return { success: true, message: 'Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto con usted en breve.' };
+  // } catch (error) {
+  //   console.error('Error al enviar el correo:', error);
   //   return { success: false, message: 'Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.' };
   // }
 
+  // Por ahora, mantenemos la simulación de éxito
   return { success: true, message: 'Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto con usted en breve.' };
 }
