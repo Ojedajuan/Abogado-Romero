@@ -1,9 +1,10 @@
+
 'use client';
 
 import Link from 'next/link';
 import { Scale, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -59,18 +60,25 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] p-6">
-              <div className="flex flex-col gap-6">
+              <SheetHeader>
                 <div className="flex items-center justify-between">
-                   <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Inicio">
-                    <Scale className="h-6 w-6 text-primary" />
-                    <span className="text-lg font-bold text-primary font-sans">LawPortfolio</span>
-                  </Link>
+                  <SheetTitle asChild>
+                    <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="LawPortfolio Inicio">
+                      <Scale className="h-6 w-6 text-primary" />
+                      <span className="text-lg font-bold text-primary font-sans">LawPortfolio</span>
+                    </Link>
+                  </SheetTitle>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon" aria-label="Cerrar menú de navegación">
                         <X className="h-5 w-5" />
                       </Button>
                   </SheetClose>
                 </div>
+                {/* You can add an invisible SheetDescription for more context if needed, e.g.
+                <SheetDescription className="sr-only">Menú de navegación principal</SheetDescription> 
+                */}
+              </SheetHeader>
+              <div className="mt-6"> {/* Added margin top for spacing after header */}
                 <NavLinksContent className="items-start" />
               </div>
             </SheetContent>
