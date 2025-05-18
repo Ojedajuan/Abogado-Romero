@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Lora, Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
@@ -23,8 +24,8 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'LawPortfolio | Servicios Legales Expertos',
-  description: 'Un portafolio profesional para un abogado experto, mostrando casos de estudio, testimonios y herramientas legales impulsadas por IA.',
+  title: 'Estudio Jurídico Mediador | Soluciones Legales y Mediación',
+  description: 'Portafolio profesional de Estudio Jurídico Mediador, ofreciendo servicios de asesoría legal y mediación experta.',
 };
 
 export default function RootLayout({

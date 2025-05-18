@@ -26,7 +26,7 @@ export async function submitContactForm(data: ContactFormValues): Promise<{ succ
   console.log('--- Simulación de Envío de Correo ---');
   console.log(`Para: ${recipientEmail}`);
   console.log(`De: ${name} <${email}>`);
-  console.log(`Asunto: ${subject || 'Nuevo Mensaje de Contacto desde LawPortfolio'}`);
+  console.log(`Asunto: ${subject || 'Nuevo Mensaje de Contacto desde Estudio Jurídico Mediador'}`);
   console.log('Cuerpo del Mensaje:');
   console.log(message);
   console.log('--- Fin de Simulación ---');
@@ -38,9 +38,9 @@ export async function submitContactForm(data: ContactFormValues): Promise<{ succ
   // try {
   //   await emailService.send({
   //     to: recipientEmail,
-  //     from: 'noreply@lawportfolio.com', // O una dirección de tu dominio
+  //     from: 'noreply@estudiojuridicomediador.com', // O una dirección de tu dominio
   //     replyTo: email,
-  //     subject: subject || `Nuevo Mensaje de Contacto de ${name}`,
+  //     subject: subject || `Nuevo Mensaje de Contacto de ${name} desde Estudio Jurídico Mediador`,
   //     html: `<p>Nombre: ${name}</p><p>Email: ${email}</p><p>Mensaje: ${message}</p>`,
   //   });
   //   return { success: true, message: 'Su mensaje ha sido enviado exitosamente. Nos pondremos en contacto con usted en breve.' };
