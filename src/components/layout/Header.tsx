@@ -1,11 +1,12 @@
+
 'use client';
 
 import Link from 'next/link';
 import { Scale, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useState } from 'react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'; // Removed AvatarImage
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -37,6 +38,14 @@ export default function Header() {
     </nav>
   );
 
+  const EJMIcon = () => (
+    <svg aria-hidden="true" focusable="false" className="h-full w-full" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fontFamily="var(--font-sans)" fontSize="45" fontWeight="bold" fill="currentColor">
+        EJM
+      </text>
+    </svg>
+  );
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8">
@@ -47,9 +56,10 @@ export default function Header() {
 
         <div className="hidden md:flex items-center gap-6">
           <NavLinksContent />
-          <Avatar className="h-10 w-10">
-            <AvatarImage src="https://placehold.co/40x40.png" alt="Foto del profesional" data-ai-hint="professional portrait"/>
-            <AvatarFallback>AB</AvatarFallback>
+          <Avatar className="h-10 w-10" role="img" aria-label="Logo de Estudio Jurídico Mediador">
+            <AvatarFallback className="bg-primary text-primary-foreground">
+              <EJMIcon />
+            </AvatarFallback>
           </Avatar>
         </div>
         
@@ -77,9 +87,10 @@ export default function Header() {
                     </div>
                   </SheetHeader>
                   <div className="mt-6 flex flex-col items-center space-y-6 px-6">
-                      <Avatar className="h-20 w-20">
-                          <AvatarImage src="https://placehold.co/80x80.png" alt="Foto del profesional" data-ai-hint="professional portrait" />
-                          <AvatarFallback>AB</AvatarFallback>
+                      <Avatar className="h-20 w-20" role="img" aria-label="Logo de Estudio Jurídico Mediador">
+                          <AvatarFallback className="bg-primary text-primary-foreground">
+                            <EJMIcon />
+                          </AvatarFallback>
                       </Avatar>
                       <NavLinksContent className="items-center" />
                   </div>
