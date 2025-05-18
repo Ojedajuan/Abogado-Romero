@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Scale, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'; // Removed AvatarImage
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -40,7 +40,7 @@ export default function Header() {
 
   const EJMIcon = () => (
     <svg aria-hidden="true" focusable="false" className="h-full w-full" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-      <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" fontFamily="var(--font-sans)" fontSize="45" fontWeight="bold" fill="currentColor">
+      <text x="50%" y="52%" dominantBaseline="middle" textAnchor="middle" fontFamily="var(--font-sans)" fontSize="45" fontWeight="bold" fill="currentColor">
         EJM
       </text>
     </svg>
