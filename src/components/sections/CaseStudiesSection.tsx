@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -72,7 +73,7 @@ export default function CaseStudiesSection() {
           {caseStudiesData.map((cs) => (
             <Card key={cs.id} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg">
               <div className="relative h-48 w-full">
-                <Image src={cs.imageUrl} alt={cs.title} layout="fill" objectFit="cover" data-ai-hint="legal document desk" />
+                <Image src={cs.imageUrl} alt={cs.title} fill={true} className="object-cover" data-ai-hint="legal document desk" />
               </div>
               <CardHeader>
                 <CardTitle className="text-xl font-semibold text-primary font-sans">{cs.title}</CardTitle>
@@ -97,7 +98,7 @@ export default function CaseStudiesSection() {
                     <ScrollArea className="max-h-[60vh] pr-4">
                       <div className="grid gap-4 py-4">
                         <div className="relative h-64 w-full rounded-md overflow-hidden mb-4">
-                           <Image src={cs.imageUrl} alt={cs.title} layout="fill" objectFit="cover" data-ai-hint="legal justice" />
+                           <Image src={cs.imageUrl} alt={cs.title} fill={true} className="object-cover" data-ai-hint="legal justice" />
                         </div>
                         <h3 className="font-semibold text-lg text-primary font-sans">Resumen del Caso</h3>
                         <p className="text-sm text-foreground/90">{cs.summary}</p>
