@@ -9,6 +9,7 @@ interface ExpertiseArea {
   icon: LucideIcon;
   title: string;
   description: string;
+  
 }
 
 const expertiseAreas: ExpertiseArea[] = [

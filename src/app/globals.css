@@ -99,10 +99,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    /* @apply border-border; /* Original problematic line */
+    border-color: hsl(var(--border)); /* Changed to direct CSS */
   }
   body {
-    @apply bg-background text-foreground;
-    @apply antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
   }
 }

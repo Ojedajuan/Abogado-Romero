@@ -13,6 +13,7 @@ import { Loader2, Send } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { submitContactForm, type ContactFormValues } from '@/app/actions/contactActions';
+import IconWrapper from '@/components/IconWrapper';
 
 
 const contactSchema = z.object({
@@ -121,7 +122,7 @@ export default function ContactSection() {
                     </FormItem>
                   )}
                 />
-                 <FormField
+                <FormField
                   control={form.control}
                   name="subject"
                   render={({ field }) => (
@@ -158,12 +159,16 @@ export default function ContactSection() {
                 <Button type="submit" disabled={isLoading} className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   {isLoading ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <IconWrapper color="hsl(var(--accent-foreground))" className="mr-2">
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      </IconWrapper>
                       Enviando...
                     </>
                   ) : (
                     <>
-                      <Send className="mr-2 h-4 w-4" />
+                      <IconWrapper color="hsl(var(--accent-foreground))" className="mr-2">
+                        <Send className="h-4 w-4" />
+                      </IconWrapper>
                       Enviar Mensaje
                     </>
                   )}

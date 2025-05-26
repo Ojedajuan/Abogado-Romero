@@ -2,9 +2,19 @@
 
 import Link from 'next/link';
 import { Scale, Menu, X } from 'lucide-react';
+import '@/app/globals.css';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from '@/components/ui/sheet';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { NavLinksContent } from './NavLinksContent';
+import ImageWithFallback from '@/components/ImageWithFallback';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -17,80 +27,119 @@ const navLinks = [
 export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const handleLinkClick = () => {
-    setIsSheetOpen(false);
-  };
-
-  const NavLinksContent = ({ className }: { className?: string }) => (
-    <nav className={cn("flex flex-col md:flex-row md:items-center gap-4 md:gap-6", className)}>
-      {navLinks.map((link) => (
-        <Link
-          key={link.label}
-          href={link.href}
-          onClick={handleLinkClick}
-          className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-          aria-label={link.label}
-        >
-          {link.label}
-        </Link>
-      ))}
-    </nav>
-  );
-
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8">
+        {/* Logo + Nombre (Desktop) */}
         <Link href="/" className="flex items-center gap-2" aria-label="Estudio Jurídico Mediador">
-          <Scale className="h-7 w-7 text-primary" />
+          <Scale style={{ color: 'hsl(var(--accent)' }} className="h-12 w-12 text-accent" />
           <span className="text-xl font-bold text-primary font-sans">Estudio Jurídico Mediador</span>
         </Link>
 
+        {/* Navegación Desktop */}
         <div className="hidden md:flex items-center gap-6">
           <NavLinksContent />
-          <Avatar className="h-10 w-10" role="img" aria-label="Logo de Estudio Jurídico Mediador">
-            {/* REEMPLAZA LA SIGUIENTE URL CON LA URL DE TU IMAGEN ALOJADA */}
-            <AvatarImage src="https://placehold.co/100x100.png" alt="Estudio Jurídico Mediador" data-ai-hint="justice statue" />
-            <AvatarFallback className="bg-primary text-primary-foreground">
-              EJM
-            </AvatarFallback>
-          </Avatar>
-        </div>
-        
+
+          {/* Logo Desktop - más prolijo */}
+         <ImageWithFallback
+  src="/images/logo.png"
+  alt="Logo del Estudio Jurídico Mediador"
+  width={200}
+  height={200}
+  showBackground={true} // Con fondo
+/>
+      </div>
+
+        {/* Menú Mobile */}
         <div className="md:hidden flex items-center">
-            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-                <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" aria-label="Abrir menú de navegación">
-                    <Menu className="h-6 w-6" />
-                </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] p-0">
-                  <SheetHeader className="px-6 pt-6 pb-4 border-b">
-                    <div className="flex items-center justify-between">
-                      <SheetTitle asChild>
-                        <Link href="/" className="flex items-center gap-2" onClick={handleLinkClick} aria-label="Estudio Jurídico Mediador Inicio">
-                          <Scale className="h-6 w-6 text-primary" />
-                          <span className="text-lg font-bold text-primary font-sans">Estudio Jurídico Mediador</span>
-                        </Link>
-                      </SheetTitle>
-                      <SheetClose asChild>
-                          <Button variant="ghost" size="icon" aria-label="Cerrar menú de navegación">
-                              <X className="h-5 w-5" />
-                          </Button>
-                      </SheetClose>
-                    </div>
-                  </SheetHeader>
-                  <div className="mt-6 flex flex-col items-center space-y-6 px-6">
-                      <Avatar className="h-20 w-20" role="img" aria-label="Logo de Estudio Jurídico Mediador">
-                          {/* REEMPLAZA LA SIGUIENTE URL CON LA URL DE TU IMAGEN ALOJADA */}
-                          <AvatarImage src="https://placehold.co/100x100.png" alt="Estudio Jurídico Mediador" data-ai-hint="justice statue"/>
-                          <AvatarFallback className="bg-primary text-primary-foreground">
-                            EJM
-                          </AvatarFallback>
-                      </Avatar>
-                      <NavLinksContent className="items-center" />
-                  </div>
-                </SheetContent>
-            </Sheet>
+  <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+    <SheetTrigger asChild>
+      <Button 
+        variant="ghost" 
+        size="icon" 
+        aria-label="Abrir menú de navegación"
+        className="hover:bg-gray-100 transition-colors duration-200"
+      >
+        <Menu className="h-6 w-6 text-gray-700" />
+      </Button>
+    </SheetTrigger>
+    
+    <SheetContent side="right" className="w-[320px] p-0 bg-white">
+      {/* Header del menú */}
+      <SheetHeader className="px-6 pt-8 pb-6 bg-gradient-to-r from-primary/5 to-accent/5 border-b border-gray-100">
+        <div className="flex items-center justify-between">
+          <SheetTitle asChild>
+            <Link
+              href="/"
+              className="flex items-center gap-3 group"
+              onClick={() => setIsSheetOpen(false)}
+              aria-label="Estudio Jurídico Mediador Inicio"
+            >
+              <Scale className="h-8 w-8 text-accent group-hover:scale-110 transition-transform duration-200" />
+              <div className="flex flex-col">
+                <span className="text-base font-bold text-primary font-sans leading-tight">
+                  Estudio Jurídico
+                </span>
+                <span className="text-sm text-gray-600 font-medium">
+                  Mediador
+                </span>
+              </div>
+            </Link>
+          </SheetTitle>
+          
+          <SheetClose asChild>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              aria-label="Cerrar menú de navegación"
+              className="hover:bg-gray-100 rounded-full transition-colors duration-200"
+            >
+              <X className="h-5 w-5 text-gray-600" />
+            </Button>
+          </SheetClose>
+        </div>
+      </SheetHeader>
+
+      {/* Contenido del menú */}
+      <div className="py-8 px-6">
+        {/* Logo principal - más grande y limpio */}
+        <div className="flex justify-center mb-8">
+          <div className="relative group">
+            <div className="h-28 w-28 flex items-center justify-center">
+              <ImageWithFallback
+                src="/images/logo.png"
+                alt="Logo del Estudio Jurídico Mediador"
+                width={112}
+                height={112}
+                className="object-contain h-full w-full group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+                showBackground={false}
+              />
+            </div>
+            {/* Efecto de brillo sutil */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+          </div>
+        </div>
+
+        {/* Línea separadora */}
+        <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full"></div>
+
+        {/* Enlaces de navegación */}
+        <NavLinksContent className="items-center space-y-1" />
+        
+        {/* Información de contacto rápido (opcional) */}
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <div className="text-center space-y-2">
+            <p className="text-sm text-gray-600 font-medium">
+              Consulta Gratuita
+            </p>
+            <p className="text-xs text-gray-500">
+              Estamos aquí para ayudarte
+            </p>
+          </div>
+        </div>
+      </div>
+    </SheetContent>
+  </Sheet>
         </div>
       </div>
     </header>
