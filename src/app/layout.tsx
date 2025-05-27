@@ -1,26 +1,24 @@
+// src/app/layout.tsx
 
 import type { Metadata } from 'next';
-import { Lora, Inter, Roboto_Mono } from 'next/font/google';
+import { Playfair_Display, EB_Garamond } from 'next/font/google'; // Usamos EB Garamond para cuerpo
 import './globals.css';
 import { cn } from '@/lib/utils';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
-const lora = Lora({
+// Configuración de fuentes
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  variable: '--font-lora',
-  weight: ['400', '700'],
+  variable: '--font-heading',
+  weight: ['400', '500', '600', '700'],
 });
 
-const inter = Inter({
+const ebGaramond = EB_Garamond({
   subsets: ['latin'],
-  variable: '--font-sans',
-});
-
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
+  variable: '--font-body',
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -37,10 +35,9 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body
         className={cn(
-          'min-h-screen bg-background font-serif antialiased',
-          lora.variable,
-          inter.variable,
-          robotoMono.variable
+          'min-h-screen bg-background font-body antialiased',
+          playfair.variable,
+          ebGaramond.variable
         )}
       >
         <div className="relative flex min-h-screen flex-col">

@@ -1,10 +1,8 @@
+/* src/app/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* body {
-  font-family: var(--font-lora), var(--font-geist-sans), sans-serif;
-} */
 
 @layer base {
   :root {
@@ -43,11 +41,10 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    
-    /* Sidebar variables - kept from template, but not primary for this design */
-    --sidebar-background: 234 24% 18%; /* Darker navy for sidebar */
+
+    --sidebar-background: 234 24% 18%;
     --sidebar-foreground: 220 20% 85%;
-    --sidebar-primary: 177 39% 45%; /* Teal accent for sidebar */
+    --sidebar-primary: 177 39% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 234 24% 28%;
     --sidebar-accent-foreground: 0 0% 100%;
@@ -56,27 +53,25 @@
   }
 
   .dark {
-    /* For dark mode, we can invert or adjust. For now, focusing on light mode as per user request implicitly */
-    /* A basic dark theme based on the primary colors */
-    --background: 234 24% 10%; /* Very dark navy */
-    --foreground: 220 27% 90%; /* Light grey text */
+    --background: 234 24% 10%;
+    --foreground: 220 27% 90%;
 
-    --card: 234 24% 15%; /* Dark navy card */
+    --card: 234 24% 15%;
     --card-foreground: 220 27% 90%;
 
     --popover: 234 24% 15%;
     --popover-foreground: 220 27% 90%;
 
-    --primary: 177 39% 45%; /* Teal as primary in dark mode for contrast */
-    --primary-foreground: 234 24% 10%; /* Dark text on teal */
+    --primary: 177 39% 45%;
+    --primary-foreground: 234 24% 10%;
 
-    --secondary: 234 24% 20%; /* Slightly lighter navy */
+    --secondary: 234 24% 20%;
     --secondary-foreground: 220 27% 90%;
 
     --muted: 234 24% 25%;
     --muted-foreground: 220 20% 70%;
 
-    --accent: 234 24% 23%; /* Navy as accent */
+    --accent: 234 24% 23%;
     --accent-foreground: 220 27% 90%;
 
     --destructive: 0 62.8% 30.6%;
@@ -84,8 +79,8 @@
 
     --border: 234 24% 25%;
     --input: 234 24% 25%;
-    --ring: 177 39% 55%; /* Brighter teal for rings */
-    
+    --ring: 177 39% 55%;
+
     --sidebar-background: 234 24% 8%;
     --sidebar-foreground: 220 20% 80%;
     --sidebar-primary: 177 39% 50%;
@@ -99,12 +94,28 @@
 
 @layer base {
   * {
-    /* @apply border-border; /* Original problematic line */
-    border-color: hsl(var(--border)); /* Changed to direct CSS */
+    border-color: hsl(var(--border));
   }
+
   body {
+    @apply font-body;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p, li, td, input, textarea, button {
+    @apply font-body;
+  }
+
+  strong, b {
+    font-weight: 600;
   }
 }
