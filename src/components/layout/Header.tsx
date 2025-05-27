@@ -28,16 +28,16 @@ export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/100">
+      <div className="container mx-auto flex h-30 max-w-screen-2xl items-center justify-between px-4 md:px-8">
         {/* Logo + Nombre (Desktop) */}
         <Link href="/" className="flex items-center gap-2" aria-label="Estudio Jurídico Mediador">
           {/* Logo Desktop - más prolijo */}
           <ImageWithFallback
             src="/images/logo.png"
             alt="Logo del Estudio Jurídico Mediador"
-            width={60} // Adjust size as needed
-            height={60} // Adjust size as needed
+            width={200} // Adjust size as needed
+            height={200} // Adjust size as needed
             className="h-auto" // Maintain aspect ratio
             showBackground={false} // No background
           />
