@@ -32,22 +32,20 @@ export default function Header() {
       <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-8">
         {/* Logo + Nombre (Desktop) */}
         <Link href="/" className="flex items-center gap-2" aria-label="Estudio Jurídico Mediador">
-          <Scale style={{ color: 'hsl(var(--accent)' }} className="h-12 w-12 text-accent" />
-          <span className="text-xl font-bold text-primary font-sans">Estudio Jurídico Mediador</span>
+          {/* Logo Desktop - más prolijo */}
+          <ImageWithFallback
+            src="/images/logo.png"
+            alt="Logo del Estudio Jurídico Mediador"
+            width={60} // Adjust size as needed
+            height={60} // Adjust size as needed
+            className="h-auto" // Maintain aspect ratio
+            showBackground={false} // No background
+          />
         </Link>
 
         {/* Navegación Desktop */}
         <div className="hidden md:flex items-center gap-6">
           <NavLinksContent />
-
-          {/* Logo Desktop - más prolijo */}
-         <ImageWithFallback
-  src="/images/logo.png"
-  alt="Logo del Estudio Jurídico Mediador"
-  width={200}
-  height={200}
-  showBackground={true} // Con fondo
-/>
       </div>
 
         {/* Menú Mobile */}
