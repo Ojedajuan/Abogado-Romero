@@ -12,7 +12,8 @@ export default function HeroSection() {
       </div>
       <div className="container mx-auto px-4 md:px-8 text-center z-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary mb-6 animate-fade-in-down font-sans">
-          Asesoramiento Legal y Mediación Experta.
+          Asesoramiento Legal 
+          Mediación Experta.
         </h1>
         <p className="text-lg md:text-xl lg:text-2xl text-foreground/80 max-w-3xl mx-auto mb-10 animate-fade-in-up">
           Navegando panoramas legales complejos con precisión y dedicación. Soluciones efectivas para tus necesidades legales y de mediación.
