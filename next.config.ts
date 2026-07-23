@@ -1,16 +1,15 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
   reactStrictMode: true,
-  swcMinify: true,
 
   // Experimental features
   experimental: {
     optimizeCss: true,
-    // Removed fontLoaders - this is now handled by next/font automatically
   },
 
-  // Ignorar errores de TypeScript y ESLint durante el build (opcional en dev)
+  // Ignorar errores de TypeScript y ESLint durante el build
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -18,8 +17,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  // Permitir imágenes remotas
+  // Configuración de imágenes (combinada)
   images: {
+    unoptimized: true, // ← CRÍTICO para export estático
     remotePatterns: [
       {
         protocol: 'https',
@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '**.googleapis.com', // Para Google Fonts
+        hostname: '**.googleapis.com',
         port: '',
         pathname: '/**',
       },
@@ -46,15 +46,6 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-  },
-
-  // Opcional: desactiva HMR WebSocket en entornos en la nube
-  webpackDevMiddleware: (config: any) => {
-    config.watchOptions = {
-      poll: 1000,
-      aggregateTimeout: 300,
-    };
-    return config;
   },
 };
 

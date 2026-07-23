@@ -35,7 +35,7 @@ export default function Header() {
             alt="Logo del Estudio Jurídico Mediador"
             width={200}
             height={200}
-            className="h-14 w-auto md:h-16 lg:h-20 flex-shrink-0"
+            className="h-24 w-auto md:h-28 lg:h-32 flex-shrink-0"
             showBackground={false}
             priority={true}
           />
