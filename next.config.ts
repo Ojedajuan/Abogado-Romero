@@ -33,6 +33,18 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'fonts.googleapis.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fonts.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 

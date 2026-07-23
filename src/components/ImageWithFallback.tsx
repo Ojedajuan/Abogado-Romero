@@ -1,8 +1,8 @@
 // components/ImageWithFallback.tsx
-'use client'
+'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/image'; 
 
 type Props = {
   src: string;
@@ -10,7 +10,8 @@ type Props = {
   width?: number;
   height?: number;
   className?: string;
-  showBackground?: boolean; // Nueva prop para controlar el fondo
+  showBackground?: boolean;
+  priority?: boolean; // Nueva prop para carga prioritaria
 };
 
 export default function ImageWithFallback({ 
@@ -19,27 +20,30 @@ export default function ImageWithFallback({
   width = 100, 
   height = 100, 
   className = "",
-  showBackground = false // Por defecto sin fondo
+  showBackground = false,
+  priority = false // Por defecto sin prioridad
 }: Props) {
   const [hasError, setHasError] = useState(false);
 
-    if (hasError) {
-      return (
-        <div className={`bg-primary text-primary-foreground flex items-center justify-center ${className}`}>
-          <span className="text-sm font-bold">EJM</span>
-        </div>
-      );
-    }
-  
+  if (hasError) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className={className}
-        onError={() => setHasError(true)}
-        style={showBackground ? { backgroundColor: '#f0f0f0' } : undefined}
-      />
+      <div className={`bg-primary text-primary-foreground flex items-center justify-center ${className}`}>
+        <span className="text-sm font-bold">EJM</span>
+      </div>
     );
   }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      onError={() => setHasError(true)}
+      style={showBackground ? { backgroundColor: '#f0f0f0' } : undefined}
+      priority={priority} // ✅ Carga prioritaria activa/desactivada
+      loading={priority ? 'eager' : 'lazy'} // Opcional: mejora rendimiento
+    />
+  );
+}
